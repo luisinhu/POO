@@ -47,7 +47,7 @@ class Aluno(Pessoa):
         else:
             print("Algo de errado não está certo")
             return False
-    def modalidade (self):
+    def modalidadep (self):
         banco = sqlite3.connect("Banco_Alunos.db")
         cursor = banco.cursor()
         cursor.execute("INSERT INTO Modalidade VALUES(:matricula)",{

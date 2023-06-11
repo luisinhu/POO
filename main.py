@@ -20,6 +20,7 @@ if login_ou_cadastro == 1:
             print("Aperte Enter")
 
 elif login_ou_cadastro == 2:
+    calculo = 0 
     while True:
         os.system('cls')
         print("Faça o login:)")
@@ -27,12 +28,11 @@ elif login_ou_cadastro == 2:
         senhal = input("Digite sua senha\n:")
         aluno_login = Aluno(None, None, matriculal, senhal,None)
         if aluno_login.login():
+            os.system('cls')
             print("Bem vindo:) Agora você pode se inscrever na modalidade futebol")
-            
-
-
-
-            
+            matricula_inscriçao = int(input("Digite sua matricula\n:"))
+            aluno_ins = Aluno(None, None, matricula_inscriçao, None, None)
+            aluno_ins.modalidadep()
         else:
             input("Aperte enter")
 
