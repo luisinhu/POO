@@ -5,11 +5,12 @@ class Pessoa:
         self.nome = nome
 
 class Aluno(Pessoa):
-    def __init__(self,nome, turma, matricula, senha):
+    def __init__(self,nome, turma, matricula, senha, modalidade):
         super().__init__(nome)
         self.turma = turma
         self.matricula = matricula
         self.senha = senha
+        self.modalidade = modalidade
 
 
     def cadastrar(self):
@@ -46,3 +47,18 @@ class Aluno(Pessoa):
         else:
             print("Algo de errado não está certo")
             return False
+    def modalidade (self):
+        banco = sqlite3.connect("Banco_Alunos.db")
+        cursor = banco.cursor()
+        cursor.execute("INSERT INTO Modalidade VALUES(:matricula)",{
+            'matricula': self.matricula,
+            'modalidade': self.modalidade,
+
+        })
+        if self.matricula == None:
+            print("Digite seus dados corretamente")
+            return False
+        else:
+            banco.commit()
+            banco.close()
+            return True
