@@ -1,4 +1,5 @@
 import sqlite3
+from tkinter import messagebox
 
 class Pessoa:
     def __init__(self, nome):
@@ -24,7 +25,6 @@ class Aluno(Pessoa):
             'modalidade': self.modalidade
         })
         if self.nome == '' or self.turma == '' or self.matricula == None or self.senha == '':
-            print("Você digitou algo incorretamente ")
             return False
         elif len(self.senha ) < 5:
             print("Senha pequena demais")
@@ -41,12 +41,12 @@ class Aluno(Pessoa):
         
         verificador = cursor.fetchall()
         if len(verificador) > 0:
-            print(f'Login feito com sucesso{self.nome}')
+            messagebox.showinfo('Parabens', 'Login Feito com sucesso')
             banco.close()
             return True
 
         else:
-            print("Algo de errado não está certo")
+            messagebox.showwarning('Erro!', 'Você digitou algo incorretamente')
             return False
     def modalidadep (self):
         banco = sqlite3.connect("Banco_Alunos.db")
