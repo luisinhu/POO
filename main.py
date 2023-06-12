@@ -2,9 +2,9 @@ from classes import *
 import os
 
 
-login_ou_cadastro = int(input("Você deseja fazer \n[1] - Cadastro\n[2] - Login\n"))
+login_ou_cadastro = int(input("Você deseja fazer \n[1] - Cadastro\n[2] - Login\n: "))
 while login_ou_cadastro != 1 and login_ou_cadastro != 2:
-    login_ou_cadastro = int(input("Você deseja fazer \n[1] - Cadastro\n [2] - Login\n"))
+    login_ou_cadastro = int(input("Você deseja fazer \n[1] - Cadastro\n [2] - Login\n: "))
 if login_ou_cadastro == 1:
     while True:
         os.system('cls')
@@ -12,8 +12,7 @@ if login_ou_cadastro == 1:
         turmac = input("Digite sua turma\nex: 2 INFO \n:")
         matriculac = int(input("Digite sua matricula\n:"))
         senhac = input("Digite sua senha\n:")
-        modalidadec = input("Digite futebol\n:")
-        aluno_cadastrado = Aluno(nomec, turmac, matriculac, senhac, modalidadec)
+        aluno_cadastrado = Aluno(nomec, turmac, matriculac, senhac, None)
         if aluno_cadastrado.cadastrar():
             break
         else:
@@ -29,10 +28,16 @@ elif login_ou_cadastro == 2:
         aluno_login = Aluno(None, None, matriculal, senhal,None)
         if aluno_login.login():
             os.system('cls')
-            print("Bem vindo:) Agora você pode se inscrever na modalidade futebol")
-            matricula_inscriçao = int(input("Digite sua matricula\n:"))
-            aluno_ins = Aluno(None, None, matricula_inscriçao, None, None)
-            aluno_ins.modalidadep()
+            escolha = int(input("Bem vindo ao nosso sistema\nSe inscreva na modalidade de futebol\n1-[sim]\n2-[não]\n: "))
+            if escolha == 1:
+                matricula_modalidade = int(input("Digite sua matricula do login\n: "))
+                inscricao_modalidade = input("Digite futebol para registrar no sistema\n: ")
+                inscricao_do_aluno = Aluno(None,None,matricula_modalidade,None,inscricao_modalidade)
+                inscricao_do_aluno.modalidadep()
+            else:
+                break   
+
+
         else:
             input("Aperte enter")
 

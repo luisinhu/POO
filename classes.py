@@ -16,11 +16,12 @@ class Aluno(Pessoa):
     def cadastrar(self):
         banco = sqlite3.connect("Banco_Alunos.db")
         cursor = banco.cursor()
-        cursor.execute(" INSERT INTO Alunos VALUES(:nome,:turma,:matricula,:senha)",{
+        cursor.execute(" INSERT INTO Alunos VALUES(:nome,:turma,:matricula,:senha,:modalidade)",{
             'nome': self.nome,
             'turma': self.turma,
             'matricula': self.matricula,
             'senha': self.senha,
+            'modalidade': self.modalidade
         })
         if self.nome == '' or self.turma == '' or self.matricula == None or self.senha == '':
             print("Você digitou algo incorretamente ")
@@ -50,12 +51,12 @@ class Aluno(Pessoa):
     def modalidadep (self):
         banco = sqlite3.connect("Banco_Alunos.db")
         cursor = banco.cursor()
-        cursor.execute("INSERT INTO Modalidade VALUES(:matricula)",{
+        cursor.execute("INSERT INTO Modalidade VALUES(:matricula, :modalidade)",{
             'matricula': self.matricula,
-            'modalidade': self.modalidade,
+            'modalidade': self.modalidade
 
         })
-        if self.matricula == None:
+        if self.matricula == None or self.modalidade == '':
             print("Digite seus dados corretamente")
             return False
         else:
