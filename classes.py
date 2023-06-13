@@ -48,18 +48,22 @@ class Aluno(Pessoa):
         else:
             messagebox.showwarning('Erro!', 'Você digitou algo incorretamente')
             return False
-    def modalidadep (self):
+
+    def modalidadep(self):
         banco = sqlite3.connect("Banco_Alunos.db")
         cursor = banco.cursor()
-        cursor.execute("INSERT INTO Modalidade VALUES(:matricula, :modalidade)",{
+
+
+        cursor.execute("SELECT * FROM Modalidade WHERE matricula = ?", (self.matricula,))
+        if cursor.fetchone():
+            messagebox.showwarning('Erro!', 'Matrícula já existente na tabela Modalidade')
+            return False
+
+        cursor.execute("INSERT INTO Modalidade VALUES (:matricula, :modalidade)", {
             'matricula': self.matricula,
             'modalidade': self.modalidade
-
         })
-        if self.matricula == None or self.modalidade == '':
-            print("Digite seus dados corretamente")
-            return False
-        else:
-            banco.commit()
-            banco.close()
-            return True
+
+        banco.commit()
+        banco.close()
+        return True

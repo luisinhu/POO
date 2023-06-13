@@ -37,6 +37,8 @@ def cadastrar():
     aluno_cadastrado = Aluno(nome, turma, matricula, senha, 'Futebol')
     if aluno_cadastrado.cadastrar():
         messagebox.showinfo('Parabens!!', 'Seja bem vindo, se cadastre na modalidade Futebol')
+        fra
+        
     else:
         messagebox.showinfo('Erro!', 'Algo de errado não está certo')
 
@@ -63,6 +65,21 @@ def fazer_login():
     entrysenhalo.pack(padx = 10, pady= 10)
 
 
+    def cadastrar_atletas():
+        frame_login.pack_forget()
+        frame_cadastrar_atletas = ctk.CTkFrame(janela)
+        frame_cadastrar_atletas.pack()
+        cadastrar_atleta = ctk.CTkEntry(frame_cadastrar_atletas, placeholder_text="Matricula", width= 200, height= 30)
+        cadastrar_atleta.pack(padx = 10, pady= 10)
+        def meu_deus():
+            atleta = cadastrar_atleta.get()
+            atleta_objeto = Aluno(None, None, atleta, None, 'Futebol')
+            atleta_objeto.modalidadep()
+        botao_cadas_atleta = ctk.CTkButton(frame_cadastrar_atletas, text="Cadastre o Atleta",command=meu_deus)
+        botao_cadas_atleta.pack(padx = 10, pady = 10)
+
+
+
     def fazer_login():
         matriculalogin = entrymatrilo.get()
         senha_login = entrysenhalo.get()
@@ -70,22 +87,6 @@ def fazer_login():
         if aluno_login.login():
             cadastrar_atletas()
     
-
-    def cadastrar_atletas():
-        frame_login.pack_forget()
-        frame_cadastrar_atletas = ctk.CTkFrame(janela)
-        frame_cadastrar_atletas.pack()
-        cadastrar_atleta = ctk.CTkEntry(frame_cadastrar_atletas, placeholder_text="Matricula", width= 200, height= 30)
-        cadastrar_atleta.pack(padx = 10, pady= 10)
-        botao_cadas_atleta = ctk.CTkButton(frame_cadastrar_atletas, text="Cadastre o Atleta")
-        botao_cadas_atleta.pack(padx = 10, pady = 10)
-        atleta = cadastrar_atleta.get()
-        atleta_objeto = Aluno(None, None, atleta, None, 'Futebol')
-        atleta_objeto.modalidadep()
-
-
-
-
 
     botao_fazerlo = ctk.CTkButton(frame_login, text="Login", command=fazer_login)
     botao_fazerlo.pack(padx = 10, pady = 10)
