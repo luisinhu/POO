@@ -1,5 +1,4 @@
 import sqlite3
-from tkinter import messagebox
 
 class Pessoa:
     def __init__(self, nome):
@@ -25,6 +24,7 @@ class Aluno(Pessoa):
             'modalidade': self.modalidade
         })
         if self.nome == '' or self.turma == '' or self.matricula == None or self.senha == '':
+            print("Você digitou algo incorretamente ")
             return False
         elif len(self.senha ) < 5:
             print("Senha pequena demais")
@@ -41,29 +41,25 @@ class Aluno(Pessoa):
         
         verificador = cursor.fetchall()
         if len(verificador) > 0:
-            messagebox.showinfo('Parabens', 'Login Feito com sucesso')
+            print(f'Login feito com sucesso{self.nome}')
             banco.close()
             return True
 
         else:
-            messagebox.showwarning('Erro!', 'Você digitou algo incorretamente')
+            print("Algo de errado não está certo")
             return False
-
-    def modalidadep(self):
+    def modalidadep (self):
         banco = sqlite3.connect("Banco_Alunos.db")
         cursor = banco.cursor()
-
-
-        cursor.execute("SELECT * FROM Modalidade WHERE matricula = ?", (self.matricula,))
-        if cursor.fetchone():
-            messagebox.showwarning('Erro!', 'Matrícula já existente na tabela Modalidade')
-            return False
-
-        cursor.execute("INSERT INTO Modalidade VALUES (:matricula, :modalidade)", {
+        cursor.execute("INSERT INTO Modalidade VALUES(:matricula, :modalidade)",{
             'matricula': self.matricula,
             'modalidade': self.modalidade
-        })
 
-        banco.commit()
-        banco.close()
-        return True
+        })
+        if self.matricula == None or self.modalidade == '':
+            print("Digite seus dados corretamente")
+            return False
+        else:
+            banco.commit()
+            banco.close()
+            return True
