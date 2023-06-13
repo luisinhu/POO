@@ -37,7 +37,7 @@ def cadastrar():
     aluno_cadastrado = Aluno(nome, turma, matricula, senha, 'Futebol')
     if aluno_cadastrado.cadastrar():
         messagebox.showinfo('Parabens!!', 'Seja bem vindo, se cadastre na modalidade Futebol')
-        fra
+        
         
     else:
         messagebox.showinfo('Erro!', 'Algo de errado não está certo')
@@ -71,11 +71,17 @@ def fazer_login():
         frame_cadastrar_atletas.pack()
         cadastrar_atleta = ctk.CTkEntry(frame_cadastrar_atletas, placeholder_text="Matricula", width= 200, height= 30)
         cadastrar_atleta.pack(padx = 10, pady= 10)
-        def meu_deus():
+        def salvar_matricula():
             atleta = cadastrar_atleta.get()
             atleta_objeto = Aluno(None, None, atleta, None, 'Futebol')
-            atleta_objeto.modalidadep()
-        botao_cadas_atleta = ctk.CTkButton(frame_cadastrar_atletas, text="Cadastre o Atleta",command=meu_deus)
+            if atleta_objeto.modalidadep():
+                messagebox.showinfo('Parabens!!', 'Você se cadastrou na modalidade futebol')
+                janela.destroy()
+        
+        
+            else:
+                messagebox.showinfo('Erro!', 'Algo de errado não está certo')
+        botao_cadas_atleta = ctk.CTkButton(frame_cadastrar_atletas, text="Cadastre o Atleta",command=salvar_matricula)
         botao_cadas_atleta.pack(padx = 10, pady = 10)
 
 
