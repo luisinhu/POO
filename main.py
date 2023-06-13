@@ -39,7 +39,7 @@ def cadastrar():
     if aluno_cadastrado.cadastrar():
         messagebox.showinfo('Parabens!!', 'Seja bem vindo, se cadastre na modalidade Futebol')
         
-        
+
     else:
         messagebox.showinfo('Erro!', 'Algo de errado não está certo')
 
