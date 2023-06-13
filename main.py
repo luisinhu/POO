@@ -5,6 +5,7 @@ from classes import Aluno
 
 
 janela = ctk.CTk()
+janela.resizable(False,False)
 
 
 frame_cadastro = ctk.CTkFrame(janela, width= 300, height= 300)
