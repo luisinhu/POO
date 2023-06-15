@@ -14,9 +14,9 @@ class Aluno(Pessoa):
 
 
     def cadastrar(self):
-        banco = sqlite3.connect("Banco_Alunos.db")
+        banco = sqlite3.connect("banco_de_dados.db")
         cursor = banco.cursor()
-        cursor.execute(" INSERT INTO Alunos VALUES(:nome,:turma,:matricula,:senha,:modalidade)",{
+        cursor.execute("INSERT INTO Alunos VALUES(:nome,:turma,:matricula,:senha,:modalidade)",{
             'nome': self.nome,
             'turma': self.turma,
             'matricula': self.matricula,
@@ -35,7 +35,7 @@ class Aluno(Pessoa):
             return True
     
     def login(self):
-        banco = sqlite3.connect("Banco_Alunos.db")
+        banco = sqlite3.connect("banco_de_dados.db")
         cursor = banco.cursor()
         cursor.execute("SELECT * FROM Alunos WHERE(matricula = ? AND senha = ?)",(self.matricula, self.senha))
         
@@ -49,7 +49,7 @@ class Aluno(Pessoa):
             print("Algo de errado não está certo")
             return False
     def modalidadep (self):
-        banco = sqlite3.connect("Banco_Alunos.db")
+        banco = sqlite3.connect("banco_de_dados.db")
         cursor = banco.cursor()
         cursor.execute("INSERT INTO Modalidade VALUES(:matricula, :modalidade)",{
             'matricula': self.matricula,
