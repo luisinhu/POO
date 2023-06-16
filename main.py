@@ -1,7 +1,8 @@
 from classes import *
 import os
 import time
-
+#7 digitos matricula de professor
+#13 digitos matricula do aluno
 primeira_acao = int(input("Escolha uma opção.\n[1]Iniciar\n[2]Programadores\nR: "))
 while primeira_acao != 1 and primeira_acao != 2 :
     print("Tente novamente")
@@ -26,17 +27,29 @@ login_ou_cadastro = int(input("Você deseja fazer \n[1] - Cadastro\n[2] - Login\
 while login_ou_cadastro != 1 and login_ou_cadastro != 2:
     login_ou_cadastro = int(input("Você deseja fazer \n[1] - Cadastro\n [2] - Login\n: "))
 if login_ou_cadastro == 1:
-    while True:
-        os.system('cls')
-        nomec = input("Digite seu nome completo\n:")
-        turmac = input("Digite sua turma\nex: 2 INFO \n:")
-        matriculac = int(input("Digite sua matricula\n:"))
-        senhac = input("Digite sua senha\n:")
-        aluno_cadastrado = Aluno(nomec, turmac, matriculac, senhac, None)
-        if aluno_cadastrado.cadastrar():
-            break
-        else:
-            print("Aperte Enter")
+        pergunta = int(input("Escolha para fazer seu cadastro\n[1] Para professor\n[2] Para aluno"))
+        while pergunta != 1 and escolha != 2:
+            print("Erro responda novamente")
+            pergunta = int(input("Escolha para fazer seu cadastro\n[1] Para professor\n[2] Para aluno"))
+        if pergunta == 1:
+            nome_prof = input("Digite seu nome\n: ")
+            matricula_prof = int(input("Digite sua matricula\n: "))
+            professor_cadastrado = Professor(nome_prof, matricula_prof)
+            if professor_cadastrado.cadastro_professor():
+                print("Professor cadastrado")
+            else:
+                print("Aperta enter")
+        else:     
+            os.system('cls')
+            nomec = input("Digite seu nome completo\n:")
+            turmac = input("Digite sua turma\nex: 2 INFO \n:")
+            matriculac = int(input("Digite sua matricula\n:"))
+            senhac = input("Digite sua senha\n:")
+            aluno_cadastrado = Aluno(nomec, turmac, matriculac, senhac, None)
+            if aluno_cadastrado.cadastrar():
+                print("Aluno cadastrado")
+            else:
+                print("Aperte Enter")
 
 elif login_ou_cadastro == 2:
     calculo = 0 

@@ -66,4 +66,19 @@ class Aluno(Pessoa):
 class Professor(Pessoa):
     def __init__(self, nome,matricula):
         super().__init__(nome)
-    def cadastro_professor(self)
+        self.nome = nome
+        self.matricula = matricula
+    def cadastro_professor(self):
+        banco = sqlite3.connect("banco_de_dados.db")
+        cursor = banco.cursor()
+        cursor.execute("INSERT INTO Professor VALUES(:nome, :matricula)",{
+            'nome': self.nome,
+            'matricula': self.matricula
+        })
+        if self.nome == None or self.matricula == None:
+            print("Cadê seus dados?")
+            return False
+        else:
+            banco.commit()
+            banco.close()
+            return True
