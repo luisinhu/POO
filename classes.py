@@ -63,3 +63,7 @@ class Aluno(Pessoa):
             banco.commit()
             banco.close()
             return True
+class Professor(Pessoa):
+    def __init__(self, nome,matricula):
+        super().__init__(nome)
+    def cadastro_professor(self)
