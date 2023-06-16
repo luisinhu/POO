@@ -1,7 +1,27 @@
 from classes import *
 import os
+import time
 
+primeira_acao = int(input("Escolha uma opção.\n[1]Iniciar\n[2]Programadores\nR: "))
+while primeira_acao != 1 and primeira_acao != 2 :
+    print("Tente novamente")
+    primeira_acao = int(input("Escolha uma opção.\n[1]Iniciar\n[2]Programadores\nR: "))
+if primeira_acao == 1:
+    loading = ("Carregando: {----------}")
+    for i in range(11):
+        os.system('cls')
+        print (loading)
+        print ("")
+        loading = loading.replace("-","=",1)
+        time.sleep(0.2)
 
+if primeira_acao == 2:
+    print('\033[1m'"="*15)
+    print("Nossos programadores são:\nDaniel\nDanielly\nLuis\nMarcos")
+    print("="*15,'\033[0;0m')
+    time.sleep(4)
+    os.system('cls')
+    print("Vamos lá")
 login_ou_cadastro = int(input("Você deseja fazer \n[1] - Cadastro\n[2] - Login\n: "))
 while login_ou_cadastro != 1 and login_ou_cadastro != 2:
     login_ou_cadastro = int(input("Você deseja fazer \n[1] - Cadastro\n [2] - Login\n: "))
