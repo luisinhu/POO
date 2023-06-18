@@ -24,6 +24,7 @@ if primeira_acao == 2:
     time.sleep(4)
     os.system('cls')
     print("Vamos lá")
+os.system("cls")
 login_ou_cadastro = int(input("Você deseja fazer \n[1] - Cadastro\n[2] - Login\n: "))
 while login_ou_cadastro != 1 and login_ou_cadastro != 2:
     login_ou_cadastro = int(input("Você deseja fazer \n[1] - Cadastro\n [2] - Login\n: "))
@@ -37,34 +38,36 @@ if login_ou_cadastro == 1:
             sexo_prof = input("Digite seu sexo\n: ")
             matricula_prof = int(input("Digite sua matricula\n: "))
             senha_prof = input("Digite sua senha\n: ")
-            professor_cadastrado = Professor(nome_prof, sexo_prof, matricula_prof,senha_prof)
+            professor_cadastrado = Professor(nome_prof,sexo_prof,matricula_prof,senha_prof)
             if professor_cadastrado.cadastro_professor():
                 print("Professor cadastrado")
             else:
                 print("Aperta enter")
         else:     
             os.system('cls')
-            nomec = input("Digite seu nome completo\n: ")
-            turmac = input("Digite sua turma\nex: 2 INFO \n: ")
-            sexoc = input("Digite seu sexo\n: ")
-            matriculac = int(input("Digite sua matricula\n: "))
-            senhac = input("Digite sua senha\n: ")
-            aluno_cadastrado = Aluno(nomec, turmac, sexoc, matriculac, senhac, None)
+            pergunta_repeticao = int(input("Quantos alunos(as), irá cadastrar?\n: "))
+            for i in range(pergunta_repeticao):
+                nomec = input("Digite seu nome completo\n: ")
+                turmac = input("Digite sua turma\nex: 2 INFO \n: ")
+                sexoc = input("Digite seu sexo\n: ")
+                matriculac = int(input("Digite sua matricula\n: "))
+                senhac = input("Digite sua senha\n: ")
+                aluno_cadastrado = Aluno(nomec, turmac, sexoc, matriculac, senhac, None)
             if aluno_cadastrado.cadastrar():
                 print("Aluno cadastrado")
+                time.sleep(1)
                 os.system("cls")
             else:
-                print("Aperte Enter")
-
+                print("Algo deu errado!")
 elif login_ou_cadastro == 2:
     resposta = int(input("Dessa fazer login como:\n[1] Professor\n[2] Aluno\n: "))
     if resposta == 1:
         print("Faça o login:)")
         matriculaprof= int(input("Digite sua matricula\n:"))
         senha = input("Digite sua senha\n: ")
-        professor_login = Professor(matriculaprof,senha)
-        if professor_login.login():
-            os.system('cls')
+        professor_login = Professor(None, None,matriculaprof,senha)
+        if professor_login.login_professor():
+            print("Deu certo?")
     else:
       matriculal = int(input("Digite sua matricula\n: "))
       senhal = input("Digite sua senha\n:")
@@ -75,7 +78,7 @@ elif login_ou_cadastro == 2:
         if escolha == 1:
             matricula_modalidade = int(input("Digite sua matricula do login\n: "))
             inscricao_modalidade = input("Digite futebol para registrar no sistema\n: ")
-            inscricao_do_aluno = Aluno(None,None,matricula_modalidade,None,inscricao_modalidade)
+            inscricao_do_aluno = Aluno(None,None,None,matricula_modalidade,None,inscricao_modalidade)
             inscricao_do_aluno.modalidadep()
         else:
             print("Parou")           
