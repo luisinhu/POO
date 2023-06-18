@@ -72,13 +72,13 @@ while True:
         resposta = int(input("Deseja fazer login como:\n[1] Professor\n[2] Aluno\n: "))
         while resposta != 1 and resposta != 2:
             print("Responda corretamente!")
-            resposta = int(input("Dessa fazer login como:\n[1] Professor\n[2] Aluno\n: "))
+            resposta = int(input("Deseja fazer login como:\n[1] Professor\n[2] Aluno\n: "))
         if resposta == 1:
             os.system("cls")
             print("Faça o login:)")
             matriculaprof= int(input("Digite sua matricula\n:"))
-            senha = input("Digite sua senha\n: ")
-            professor_login = Professor(None, None,matriculaprof,senha)
+            senha_login_prof = input("Digite sua senha\n: ")
+            professor_login = Professor(None, None,matriculaprof,senha_login_prof)
             if professor_login.login_professor():
                 acao_professor= int(input("Bem vindo ao nosso sistema\n[1] - Ve alunos cadastrados\n[2] - Excluir cadastro de aluno\n: "))
                 while acao_professor != 1 and acao_professor != 2:
@@ -93,10 +93,14 @@ while True:
                     modalidade_excluir = input("Digite a modalidade\nOBS: Aqui é só futebol\n: ")
 
                 
-        else:
-            print("Aluno")
-            teste = input("Volta vida...")
-            
+        if resposta == 2:
+            os.system("cls")
+            print("Faça o login")
+            matricula_aluno = int(input("Digite sua matricula\n:"))
+            senha_login_aluno = input("Digite sua senha\n: ")
+            aluno_login = Aluno(None, None,matricula_aluno,senha_login_aluno,None)
+            if aluno_login.login():
+                print("Bem Vindo!")
             
     else:
         print("Obrigado por executar nosso projeto jics")
