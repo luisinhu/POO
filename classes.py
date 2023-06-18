@@ -49,23 +49,8 @@ class Aluno(Pessoa):
         else:
             print("Algo de errado não está certo")
             return False
-    def modalidadep (self):
-        banco = sqlite3.connect("banco_de_dados.db")
-        cursor = banco.cursor()
-        cursor.execute("INSERT INTO Modalidade VALUES(:matricula, :modalidade)",{
-            'matricula': self.matricula,
-            'modalidade': self.modalidade
-
-        })
-        if self.matricula == None or self.modalidade == '':
-            print("Digite seus dados corretamente")
-            return False
-        else:
-            banco.commit()
-            banco.close()
-            return True
 class Professor(Pessoa):
-    def __init__(self, nome,sexo,matricula,senha):
+    def __init__(self, nome,sexo,matricula, senha):
         super().__init__(nome, sexo)
         self.matricula = matricula
         self.senha = senha
@@ -92,16 +77,17 @@ class Professor(Pessoa):
         cursor.execute("SELECT * FROM Professor WHERE(matricula = ? AND senha = ?)",(self.matricula, self.senha))
         verifica_login_prof = cursor.fetchall()
         if len(verifica_login_prof) > 0:
-            print(f'Login feito com sucesso{self.nome}')
+            print('Login feito com sucesso')
             banco.close()
             return True
         else:
             print("teste...")
+            return False
 
     def excluir_aluno(self):
       banco = sqlite3.connect('banco_de_dados.db')
       cursor = banco.cursor()
-      cursor.execute("SELECT * FROM Professor WHERE(matrícula = ? AND senha = ?)",(self.matricula, self.senha))
+      cursor.execute("SELECT * FROM Professor WHERE(matricula = ? AND senha = ?)",(self.matricula, self.senha))
       verificador = cursor.fetchall()
       if len(verificador) > 0:
         cursor.execute("DELETE FROM Modalidade WHERE (matricula = ? AND modalidade = ?)",(self.matricula, self.modalidade))
