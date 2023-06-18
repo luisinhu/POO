@@ -42,7 +42,7 @@ class Aluno(Pessoa):
         cursor.execute("SELECT * FROM Alunos WHERE(matricula = ? AND senha = ?)",(self.matricula, self.senha))
         verificador = cursor.fetchall()
         if len(verificador) > 0:
-            print(f'Login feito com sucesso{self.nome}')
+            print('Login feito com sucesso')
             banco.close()
             return True
 
@@ -50,10 +50,12 @@ class Aluno(Pessoa):
             print("Algo de errado não está certo")
             return False
 class Professor(Pessoa):
-    def __init__(self, nome,sexo,matricula, senha):
+    def __init__(self, nome,turma, sexo, matricula, senha, modalidade):
         super().__init__(nome, sexo)
+        self.turma = turma
         self.matricula = matricula
         self.senha = senha
+        self.modalidade = modalidade
     def cadastro_professor(self):
         banco = sqlite3.connect("banco_de_dados.db")
         cursor = banco.cursor()
@@ -81,17 +83,16 @@ class Professor(Pessoa):
             banco.close()
             return True
         else:
-            print("teste...")
+            print("Erro, algo está errado")
             return False
-
-    def excluir_aluno(self):
-      banco = sqlite3.connect('banco_de_dados.db')
-      cursor = banco.cursor()
-      cursor.execute("SELECT * FROM Professor WHERE(matricula = ? AND senha = ?)",(self.matricula, self.senha))
-      verificador = cursor.fetchall()
-      if len(verificador) > 0:
-        cursor.execute("DELETE FROM Modalidade WHERE (matricula = ? AND modalidade = ?)",(self.matricula, self.modalidade))
-        banco.commit()
-        banco.close()
-      else:
-        print("A")
+    def exibir_alunos(self):
+        banco = sqlite3.connect("banco_de_dados.db")
+        cursor = banco.cursor()
+        cursor.execute("SELECT * FROM Alunos WHERE(nome = ? and turma = ? and modalidade = ?)",(self.nome,self.turma, self.modalidade))
+        mostrar_alunos = cursor.fetchall()
+        if len(mostrar_alunos) > 0:
+            print("Esses são os alunos cadastrados")
+            banco.close()
+            return True
+   
+    

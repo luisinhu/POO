@@ -78,19 +78,23 @@ while True:
             print("Faça o login:)")
             matriculaprof= int(input("Digite sua matricula\n:"))
             senha_login_prof = input("Digite sua senha\n: ")
-            professor_login = Professor(None, None,matriculaprof,senha_login_prof)
+            professor_login = Professor(None,None,None,matriculaprof,senha_login_prof,None)
             if professor_login.login_professor():
                 acao_professor= int(input("Bem vindo ao nosso sistema\n[1] - Ve alunos cadastrados\n[2] - Excluir cadastro de aluno\n: "))
                 while acao_professor != 1 and acao_professor != 2:
                     print("Erro, responda corretamente!")
                     acao_professor= int(input("Bem vindo ao nosso sistema\n[1] - Ve alunos cadastrados\n[2] - Excluir cadastro de aluno\n: "))
                 if acao_professor == 1:
-                    time.sleep(1)
-                    marcos = input("Cala boca puta")
+                    print("Vamos lá")
+                    if professor_login.exibir_alunos():
+                        print("Esses são os alunos cadastrados")
+    
+                        
+                    
                 else:
-                    print("Vamos deletar quem?")
-                    matricula_excluir = int(input("Digite a matricula do aluno\n: "))
-                    modalidade_excluir = input("Digite a modalidade\nOBS: Aqui é só futebol\n: ")
+                    print("Em atualizações futuras...")
+                    time.sleep(10)
+                
 
                 
         if resposta == 2:
@@ -98,9 +102,10 @@ while True:
             print("Faça o login")
             matricula_aluno = int(input("Digite sua matricula\n:"))
             senha_login_aluno = input("Digite sua senha\n: ")
-            aluno_login = Aluno(None, None,matricula_aluno,senha_login_aluno,None)
+            aluno_login = Aluno(None,None,None,matricula_aluno,senha_login_aluno,None)
             if aluno_login.login():
                 print("Bem Vindo!")
+                time.sleep(10)
             
     else:
         print("Obrigado por executar nosso projeto jics")
