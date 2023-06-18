@@ -86,7 +86,7 @@ class Professor(Pessoa):
             banco.commit()
             banco.close()
             return True
-    def login_professor (self):
+    def login_professor (self): #vou mijarkkkkkkkkkk
         banco = sqlite3.connect("banco_de_dados.db")
         cursor = banco.cursor()
         cursor.execute("SELECT * FROM Professor WHERE(matricula = ? AND senha = ?)",(self.matricula, self.senha))
