@@ -27,25 +27,27 @@ login_ou_cadastro = int(input("Você deseja fazer \n[1] - Cadastro\n[2] - Login\
 while login_ou_cadastro != 1 and login_ou_cadastro != 2:
     login_ou_cadastro = int(input("Você deseja fazer \n[1] - Cadastro\n [2] - Login\n: "))
 if login_ou_cadastro == 1:
-        pergunta = int(input("Escolha para fazer seu cadastro\n[1] Para professor\n[2] Para aluno"))
-        while pergunta != 1 and escolha != 2:
+        pergunta = int(input("Escolha para fazer seu cadastro\n[1] Para professor\n[2] Para aluno\nR: "))
+        while pergunta != 1 and pergunta != 2:
             print("Erro responda novamente")
-            pergunta = int(input("Escolha para fazer seu cadastro\n[1] Para professor\n[2] Para aluno"))
+            pergunta = int(input("Escolha para fazer seu cadastro\n[1] Para professor\n[2] Para aluno\nR: "))
         if pergunta == 1:
             nome_prof = input("Digite seu nome\n: ")
+            sexo_prof = input("Digite seu sexo\n: ")
             matricula_prof = int(input("Digite sua matricula\n: "))
-            professor_cadastrado = Professor(nome_prof, matricula_prof)
+            professor_cadastrado = Professor(nome_prof,sexo_prof, matricula_prof)
             if professor_cadastrado.cadastro_professor():
                 print("Professor cadastrado")
             else:
                 print("Aperta enter")
         else:     
             os.system('cls')
-            nomec = input("Digite seu nome completo\n:")
-            turmac = input("Digite sua turma\nex: 2 INFO \n:")
-            matriculac = int(input("Digite sua matricula\n:"))
-            senhac = input("Digite sua senha\n:")
-            aluno_cadastrado = Aluno(nomec, turmac, matriculac, senhac, None)
+            nomec = input("Digite seu nome completo\n: ")
+            turmac = input("Digite sua turma\nex: 2 INFO \n: ")
+            sexoc = input("Digite seu sexo\n: ")
+            matriculac = int(input("Digite sua matricula\n: "))
+            senhac = input("Digite sua senha\n: ")
+            aluno_cadastrado = Aluno(nomec, turmac,sexoc, matriculac, senhac, None)
             if aluno_cadastrado.cadastrar():
                 print("Aluno cadastrado")
             else:
@@ -64,6 +66,10 @@ elif login_ou_cadastro == 2:
         if escolha == 1:
             matricula_modalidade = int(input("Digite sua matricula do login\n: "))
             inscricao_modalidade = input("Digite futebol para registrar no sistema\n: ")
+            while inscricao_modalidade != "futebol" or inscricao_modalidade != "Futebol":
+                print("Digito incorreto!")
+                matricula_modalidade = int(input("Digite sua matricula do login\n: "))
+            
             inscricao_do_aluno = Aluno(None,None,matricula_modalidade,None,inscricao_modalidade)
             inscricao_do_aluno.modalidadep()
         else:

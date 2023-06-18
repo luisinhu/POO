@@ -1,12 +1,13 @@
 import sqlite3
 
 class Pessoa:
-    def __init__(self, nome):
+    def __init__(self, nome, sexo):
         self.nome = nome
+        self.sexo = sexo
 
 class Aluno(Pessoa):
     def __init__(self,nome, turma, matricula, senha, modalidade):
-        super().__init__(nome)
+        super().__init__(nome, sexo)
         self.turma = turma
         self.matricula = matricula
         self.senha = senha
@@ -16,14 +17,15 @@ class Aluno(Pessoa):
     def cadastrar(self):
         banco = sqlite3.connect("banco_de_dados.db")
         cursor = banco.cursor()
-        cursor.execute("INSERT INTO Alunos VALUES(:nome,:turma,:matricula,:senha,:modalidade)",{
+        cursor.execute("INSERT INTO Alunos VALUES(:nome,:turma,:sexo,:matricula,:senha,:modalidade)",{
             'nome': self.nome,
             'turma': self.turma,
+            'sexo': self.sexo,
             'matricula': self.matricula,
             'senha': self.senha,
             'modalidade': self.modalidade
         })
-        if self.nome == '' or self.turma == '' or self.matricula == None or self.senha == '':
+        if self.nome == '' or self.turma == '' or self.sexo == '' or self.matricula == None or self.senha == '':
             print("Você digitou algo incorretamente ")
             return False
         elif len(self.senha ) < 5:
@@ -65,15 +67,16 @@ class Aluno(Pessoa):
             return True
 class Professor(Pessoa):
     def __init__(self, nome,matricula):
-        super().__init__(nome)
-        self.nome = nome
+        super().__init__(nome, sexo)
         self.matricula = matricula
     def cadastro_professor(self):
         banco = sqlite3.connect("banco_de_dados.db")
         cursor = banco.cursor()
-        cursor.execute("INSERT INTO Professor VALUES(:nome, :matricula)",{
+        cursor.execute("INSERT INTO Professor VALUES(:nome,:sexo,:matricula)",{
             'nome': self.nome,
+            'sexo': self.sexo,
             'matricula': self.matricula
+            
         })
         if self.nome == None or self.matricula == None:
             print("Cadê seus dados?")
