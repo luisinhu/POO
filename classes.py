@@ -6,7 +6,7 @@ class Pessoa:
         self.sexo = sexo
 
 class Aluno(Pessoa):
-    def __init__(self,nome, turma, matricula, senha, modalidade):
+    def __init__(self,nome,turma, sexo, matricula, senha, modalidade):
         super().__init__(nome, sexo)
         self.turma = turma
         self.matricula = matricula
@@ -40,7 +40,6 @@ class Aluno(Pessoa):
         banco = sqlite3.connect("banco_de_dados.db")
         cursor = banco.cursor()
         cursor.execute("SELECT * FROM Alunos WHERE(matricula = ? AND senha = ?)",(self.matricula, self.senha))
-        
         verificador = cursor.fetchall()
         if len(verificador) > 0:
             print(f'Login feito com sucesso{self.nome}')
@@ -66,22 +65,47 @@ class Aluno(Pessoa):
             banco.close()
             return True
 class Professor(Pessoa):
-    def __init__(self, nome,matricula):
+    def __init__(self, nome,sexo,matricula,senha):
         super().__init__(nome, sexo)
         self.matricula = matricula
+        self.senha = senha
     def cadastro_professor(self):
         banco = sqlite3.connect("banco_de_dados.db")
         cursor = banco.cursor()
-        cursor.execute("INSERT INTO Professor VALUES(:nome,:sexo,:matricula)",{
+        cursor.execute("INSERT INTO Professor VALUES(:nome,:sexo,:matricula,:senha)",{
             'nome': self.nome,
             'sexo': self.sexo,
-            'matricula': self.matricula
+            'matricula': self.matricula,
+            'senha': self.senha
             
         })
-        if self.nome == None or self.matricula == None:
+        if self.nome == None or self.matricula == None or self.senha == None:
             print("Cadê seus dados?")
             return False
         else:
             banco.commit()
             banco.close()
             return True
+    def login_professor (self):
+        banco = sqlite3.connect("banco_de_dados.db")
+        cursor = banco.cursor()
+        cursor.execute("SELECT * FROM Professor WHERE(matrícula = ? AND senha = ?)",(self.matricula, self.senha))
+        verifica_login_prof = cursor.fetchall()
+        if len(verifica_login_prof) > 0:
+            print(f'Login feito com sucesso{self.nome}')
+            banco.close()
+            return True
+        else:
+            print("teste...")
+
+    def excluir_aluno(self):
+      banco = sqlite3.connect('banco_de_dados.db')
+      cursor = banco.cursor()
+      cursor.execute("SELECT * FROM Professor WHERE(matrícula = ? AND senha = ?)",(self.matricula, self.senha))
+      verificador = cursor.fetchall()
+      if len(verificador) > 0:
+        cursor.execute("DELETE FROM Modalidade WHERE (matricula = ? AND modalidade = ?)",(self.matricula, self.modalidade))
+        banco.commit()
+        banco.close()
+      else:
+        print("A")
