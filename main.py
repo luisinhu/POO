@@ -51,6 +51,7 @@ if login_ou_cadastro == 1:
             aluno_cadastrado = Aluno(nomec, turmac, sexoc, matriculac, senhac, None)
             if aluno_cadastrado.cadastrar():
                 print("Aluno cadastrado")
+                os.system("cls")
             else:
                 print("Aperte Enter")
 
@@ -60,14 +61,13 @@ elif login_ou_cadastro == 2:
         print("Faça o login:)")
         matriculaprof= int(input("Digite sua matricula\n:"))
         senha = input("Digite sua senha\n: ")
-        professor_login = Professor(matriculaprof,senha)
-        if professor_login.login():
+        professor_login = Professor(None,None,matriculaprof,senha)
+        if professor_login.login_professor():
             os.system('cls')
-            print("PEGA IRANIRA")
     else:
       matriculal = int(input("Digite sua matricula\n: "))
       senhal = input("Digite sua senha\n:")
-      aluno_login = Aluno(None, None, matriculal, senhal, None)
+      aluno_login = Aluno(None, None, None, matriculal, senhal, None)
       if aluno_login.login():
         os.system('cls')
         escolha = int(input("Bem vindo ao nosso sistema\nSe inscreva na modalidade de futebol\n1-[sim]\n2-[não]\n: "))
