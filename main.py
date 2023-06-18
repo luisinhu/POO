@@ -26,9 +26,10 @@ if primeira_acao == 2:
     print("Vamos lá")
 os.system("cls")
 while True:
-    login_ou_cadastro = int(input("Você deseja fazer \n[1] - Cadastro\n[2] - Login\n: "))
-    while login_ou_cadastro != 1 and login_ou_cadastro != 2:
-        login_ou_cadastro = int(input("Você deseja fazer \n[1] - Cadastro\n [2] - Login\n: "))
+    os.system("cls")
+    login_ou_cadastro = int(input("Você deseja fazer \n[1] - Cadastro\n[2] - Login\n[3] - Sair\n: "))
+    while login_ou_cadastro != 1 and login_ou_cadastro != 2 and login_ou_cadastro != 3:
+        login_ou_cadastro = int(input("Você deseja fazer \n[1] - Cadastro\n [2] - Login\n[3] - Sair\n: "))
     if login_ou_cadastro == 1:
             pergunta = int(input("Escolha para fazer seu cadastro\n[1] Para professor\n[2] Para aluno\nR: "))
             while pergunta != 1 and pergunta != 2:
@@ -61,18 +62,19 @@ while True:
                         aluno_cadastrado = Aluno (nomec,turmac, sexoc, matriculac,senhac,"Futebol")
                     else:
                         aluno_cadastrado = Aluno(nomec, turmac, sexoc, matriculac, senhac, None)
-                if aluno_cadastrado.cadastrar():
-                    print("Aluno cadastrado")
-                    time.sleep(1)
-                    os.system("cls")
-                else:
-                    print("Algo deu errado!")
+                    if aluno_cadastrado.cadastrar():
+                        print("Aluno cadastrado")
+                        time.sleep(1)
+                        os.system("cls")
+                    else:
+                        print("Algo deu errado!")
     elif login_ou_cadastro == 2:
-        resposta = int(input("Dessa fazer login como:\n[1] Professor\n[2] Aluno\n: "))
+        resposta = int(input("Deseja fazer login como:\n[1] Professor\n[2] Aluno\n: "))
         while resposta != 1 and resposta != 2:
             print("Responda corretamente!")
             resposta = int(input("Dessa fazer login como:\n[1] Professor\n[2] Aluno\n: "))
         if resposta == 1:
+            os.system("cls")
             print("Faça o login:)")
             matriculaprof= int(input("Digite sua matricula\n:"))
             senha = input("Digite sua senha\n: ")
@@ -83,7 +85,8 @@ while True:
                     print("Erro, responda corretamente!")
                     acao_professor= int(input("Bem vindo ao nosso sistema\n[1] - Ve alunos cadastrados\n[2] - Excluir cadastro de aluno\n: "))
                 if acao_professor == 1:
-                    print("a")
+                    time.sleep(1)
+                    marcos = input("Cala boca puta")
                 else:
                     print("Vamos deletar quem?")
                     matricula_excluir = int(input("Digite a matricula do aluno\n: "))
@@ -92,5 +95,19 @@ while True:
                 
         else:
             print("Aluno")
+            teste = input("Volta vida...")
+            
+            
     else:
-        print("Parou")           
+        print("Obrigado por executar nosso projeto jics")
+        time.sleep(2)
+        loading = ("Desligando: {----------}")
+        for i in range(11):
+            os.system('cls')
+            print (loading)
+            print ("")
+            loading = loading.replace("-","=",1)
+            time.sleep(0.2)
+        os.system("cls")
+        quit()
+
