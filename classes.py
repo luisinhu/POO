@@ -86,10 +86,10 @@ class Professor(Pessoa):
             banco.commit()
             banco.close()
             return True
-    def login_professor (self):
+    def login_professor (self): #vou mijarkkkkkkkkkk
         banco = sqlite3.connect("banco_de_dados.db")
         cursor = banco.cursor()
-        cursor.execute("SELECT * FROM Professor WHERE(matrícula = ? AND senha = ?)",(self.matricula, self.senha))
+        cursor.execute("SELECT * FROM Professor WHERE(matricula = ? AND senha = ?)",(self.matricula, self.senha))
         verifica_login_prof = cursor.fetchall()
         if len(verifica_login_prof) > 0:
             print(f'Login feito com sucesso{self.nome}')

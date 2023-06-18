@@ -16,6 +16,7 @@ if primeira_acao == 1:
         loading = loading.replace("-","=",1)
         time.sleep(0.2)
 
+
 if primeira_acao == 2:
     print('\033[1m'"="*15)
     print("Nossos programadores são:\nDaniel\nDanielly\nLuis\nMarcos")
@@ -59,9 +60,9 @@ elif login_ou_cadastro == 2:
     if resposta == 1:
         print("Faça o login:)")
         matriculaprof= int(input("Digite sua matricula\n:"))
-        senha = input("Digite sua senha\n: ")
-        professor_login = Professor(matriculaprof,senha)
-        if professor_login.login():
+        senha_prof = input("Digite sua senha\n: ")
+        professor_login = Professor(None,None,matriculaprof,senha_prof)
+        if professor_login.login_professor():
             os.system('cls')
             print("PEGA IRANIRA")
     else:
