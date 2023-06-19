@@ -43,9 +43,19 @@ while True:
                 professor_cadastrado = Professor(nome_prof,sexo_prof,matricula_prof,senha_prof)
                 if professor_cadastrado.cadastro_professor():
                     print("Professor cadastrado")
-                    time.sleep(1)
+                    time.sleep(5)
                     os.system("cls")
-                    exibicao_alunos=int(input("Deseja ver os alunos cadastrados na modalidade futebol?"))
+                    exibicao_alunos=input("Deseja ver os alunos cadastrados na modalidade futebol? [S] ou [N]?")
+                    while exibicao_alunos != "S" and exibicao_alunos != "N":
+                        exibicao_alunos=input("Deseja ver os alunos cadastrados na modalidade futebol? [S] ou [N]?")
+                    if exibicao_alunos == "S":
+                        print("Aqui estão os alunos cadastrados")
+                        professor_cadastrado.exibir_alunos()
+                        time.sleep(10)
+
+                    else: 
+                        quit()
+
                 else:
                     print("Aperta enter")
             else:     
@@ -78,16 +88,17 @@ while True:
             print("Faça o login:)")
             matriculaprof= int(input("Digite sua matricula\n:"))
             senha_login_prof = input("Digite sua senha\n: ")
-            professor_login = Professor(None,None,None,matriculaprof,senha_login_prof,None)
+            professor_login = Professor(None, None, matriculaprof, senha_login_prof)
             if professor_login.login_professor():
                 acao_professor= int(input("Bem vindo ao nosso sistema\n[1] - Ve alunos cadastrados\n[2] - Excluir cadastro de aluno\n: "))
                 while acao_professor != 1 and acao_professor != 2:
                     print("Erro, responda corretamente!")
                     acao_professor= int(input("Bem vindo ao nosso sistema\n[1] - Ve alunos cadastrados\n[2] - Excluir cadastro de aluno\n: "))
                 if acao_professor == 1:
+                    time.sleep(20)
                     print("Vamos lá")
-                    if professor_login.exibir_alunos():
-                        print("Esses são os alunos cadastrados")
+                    professor_login.exibir_alunos()
+                    print("Esses são os alunos cadastrados")
     
                         
                     

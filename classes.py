@@ -50,12 +50,10 @@ class Aluno(Pessoa):
             print("Algo de errado não está certo")
             return False
 class Professor(Pessoa):
-    def __init__(self, nome,turma, sexo, matricula, senha, modalidade):
+    def __init__(self, nome, sexo, matricula, senha):
         super().__init__(nome, sexo)
-        self.turma = turma
         self.matricula = matricula
         self.senha = senha
-        self.modalidade = modalidade
     def cadastro_professor(self):
         banco = sqlite3.connect("banco_de_dados.db")
         cursor = banco.cursor()
@@ -85,14 +83,12 @@ class Professor(Pessoa):
         else:
             print("Erro, algo está errado")
             return False
+
     def exibir_alunos(self):
         banco = sqlite3.connect("banco_de_dados.db")
         cursor = banco.cursor()
-        cursor.execute("SELECT * FROM Alunos WHERE(nome = ? and turma = ? and modalidade = ?)",(self.nome,self.turma, self.modalidade))
+        cursor.execute("SELECT * FROM Alunos ")
         mostrar_alunos = cursor.fetchall()
-        if len(mostrar_alunos) > 0:
-            print("Esses são os alunos cadastrados")
-            banco.close()
-            return True
-   
+        for i in mostrar_alunos:
+            print(i)
     
