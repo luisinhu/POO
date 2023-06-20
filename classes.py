@@ -1,10 +1,10 @@
 import sqlite3
-
+#Danielly
 class Pessoa:
     def __init__(self, nome, sexo):
         self.nome = nome
         self.sexo = sexo
-
+#Danielly
 class Aluno(Pessoa):
     def __init__(self,nome,turma, sexo, matricula, senha, modalidade):
         super().__init__(nome, sexo)
@@ -13,7 +13,7 @@ class Aluno(Pessoa):
         self.senha = senha
         self.modalidade = modalidade
 
-
+    #Luis
     def cadastrar(self):
         banco = sqlite3.connect("banco_de_dados.db")
         cursor = banco.cursor()
@@ -35,7 +35,7 @@ class Aluno(Pessoa):
             banco.commit()
             banco.close()
             return True
-    
+    #Luis
     def login(self):
         banco = sqlite3.connect("banco_de_dados.db")
         cursor = banco.cursor()
@@ -49,11 +49,13 @@ class Aluno(Pessoa):
         else:
             print("Algo de errado não está certo")
             return False
+#Danielly
 class Professor(Pessoa):
     def __init__(self, nome, sexo, matricula, senha):
         super().__init__(nome, sexo)
         self.matricula = matricula
         self.senha = senha
+    #Marcos
     def cadastro_professor(self):
         banco = sqlite3.connect("banco_de_dados.db")
         cursor = banco.cursor()
@@ -71,6 +73,7 @@ class Professor(Pessoa):
             banco.commit()
             banco.close()
             return True
+    #Marcos
     def login_professor (self): 
         banco = sqlite3.connect("banco_de_dados.db")
         cursor = banco.cursor()
@@ -83,7 +86,7 @@ class Professor(Pessoa):
         else:
             print("Erro, algo está errado")
             return False
-
+    #Daniel
     def exibir_alunos(self):
         banco = sqlite3.connect("banco_de_dados.db")
         cursor = banco.cursor()
@@ -101,7 +104,7 @@ class Professor(Pessoa):
             print("Sexo:",sexo)
             print("Matricula:",matricula)
             print("Modalidade:",modalidade)
-        print()
+            print()
 
         banco.close()
     

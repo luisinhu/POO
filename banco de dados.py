@@ -1,5 +1,5 @@
 import sqlite3
-
+#Luis e Daniel
 
 banco = sqlite3.connect("banco_de_dados.db")
 cursor = banco.cursor()

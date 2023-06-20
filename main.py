@@ -1,9 +1,17 @@
 from classes import *
 import os
 import time
+#2 INFORMÁTICA VESPERTINO
+#ALUNOS :
+#Danielly vitoria
+#Daniel Guimarães Souza
+#Luis Henrique
+#Marcos Aurélio de Albuquerque de Oliveira Santos
+#OBSERVAÇÕES
 #7 digitos matricula de professor
 #13 digitos matricula do aluno
 primeira_acao = int(input("Escolha uma opção.\n[1]Iniciar\n[2]Programadores\nR: "))
+#Danielly
 while primeira_acao != 1 and primeira_acao != 2 :
     print("Tente novamente")
     primeira_acao = int(input("Escolha uma opção.\n[1]Iniciar\n[2]Programadores\nR: "))
@@ -31,10 +39,13 @@ while True:
     print("        BEM VINDO AO SISTEMA JICS    ")
     print("————"*16)
     login_ou_cadastro = int(input("Você deseja fazer \n[1] - Cadastro\n[2] - Login\n[3] - Sair\n: "))
+    #Danielly
     while login_ou_cadastro != 1 and login_ou_cadastro != 2 and login_ou_cadastro != 3:
         login_ou_cadastro = int(input("Você deseja fazer \n[1] - Cadastro\n [2] - Login\n[3] - Sair\n: "))
     if login_ou_cadastro == 1:
+        #Daniel
             pergunta = int(input("Escolha para fazer seu cadastro\n[1] Para professor\n[2] Para aluno\nR: "))
+            #Danielly
             while pergunta != 1 and pergunta != 2:
                 print("Erro responda novamente")
                 pergunta = int(input("Escolha para fazer seu cadastro\n[1] Para professor\n[2] Para aluno\nR: "))
@@ -49,6 +60,7 @@ while True:
                     time.sleep(5)
                     os.system("cls")
                     exibicao_alunos=input("Deseja ver os alunos cadastrados na modalidade futebol? [S] ou [N]?")
+                    #Danielly
                     while exibicao_alunos != "S" and exibicao_alunos != "N":
                         exibicao_alunos=input("Deseja ver os alunos cadastrados na modalidade futebol? [S] ou [N]?")
                     if exibicao_alunos == "S" and exibicao_alunos == "s":
@@ -62,7 +74,8 @@ while True:
 
                 else:
                     print("Aperta enter")
-            else:     
+            else:
+                #Luis    
                 os.system('cls')
                 pergunta_repeticao = int(input("Quantos alunos(as), irá cadastrar?\n: "))
                 for i in range(pergunta_repeticao):
@@ -72,6 +85,7 @@ while True:
                     matriculac = int(input("Digite sua matricula\n: "))
                     senhac = input("Digite sua senha\n: ")
                     modalidadec = int(input("Deseja se inscrever em futebol\n[1] - Sim\n[2] - Não\n: "))
+                    #Danielly
                     while modalidadec != 1 and modalidadec != 2:
                         print("Erro, tente novamente")
                         modalidadec = int(input("Deseja se inscrever em futebol\n[1] - Sim\n[2] - Não\n: "))         
@@ -87,9 +101,11 @@ while True:
                         print("Algo deu errado!")
     elif login_ou_cadastro == 2:
         resposta = int(input("Deseja fazer login como:\n[1] Professor\n[2] Aluno\n: "))
+        #Danielly
         while resposta != 1 and resposta != 2:
             print("Responda corretamente!")
             resposta = int(input("Deseja fazer login como:\n[1] Professor\n[2] Aluno\n: "))
+        #Daniel
         if resposta == 1:
             os.system("cls")
             print("Faça o login:)")
@@ -99,6 +115,7 @@ while True:
             if professor_login.login_professor():
                 os.system("cls")
                 acao_professor= int(input("Bem vindo ao nosso sistema\n[1] - Ve alunos cadastrados\n[2] - Excluir cadastro de aluno\n: "))
+                #Danielly
                 while acao_professor != 1 and acao_professor != 2:
                     print("Erro, responda corretamente!")
                     acao_professor= int(input("Bem vindo ao nosso sistema\n[1] - Ve alunos cadastrados\n[2] - Excluir cadastro de aluno\n: "))
@@ -108,6 +125,7 @@ while True:
                     professor_login.exibir_alunos()
                     print("Esses são os alunos cadastrados")
                     tempo_de_esperar = int(input("Digite 1 quando desejar voltar\n: "))
+                    #Danielly
                     while tempo_de_esperar != 1:
                         print("Digite o número corretamente!")
                         tempo_de_esperar = int(input("Digite 1 quando desejar voltar\n: "))
@@ -134,6 +152,7 @@ while True:
                 time.sleep(10)
             
     else:
+        #Daniel
         print("Obrigado por executar nosso projeto jics")
         time.sleep(2)
         loading = ("Desligando: {----------}")
