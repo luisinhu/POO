@@ -98,13 +98,12 @@ class Professor(Pessoa):
             sexo = mostrar_alunos[2]
             matricula = mostrar_alunos[3]
             modalidade = mostrar_alunos[4]
-           
             print("Nome:", nome)
             print("Turma:",turma)
             print("Sexo:",sexo)
             print("Matricula:",matricula)
             print("Modalidade:",modalidade)
-            print()
+        print()
 
         banco.close()
     

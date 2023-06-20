@@ -113,6 +113,7 @@ while True:
             senha_login_prof = input("Digite sua senha\n: ")
             professor_login = Professor(None, None, matriculaprof, senha_login_prof)
             if professor_login.login_professor():
+                time.sleep(3)
                 os.system("cls")
                 acao_professor= int(input("Bem vindo ao nosso sistema\n[1] - Ve alunos cadastrados\n[2] - Excluir cadastro de aluno\n: "))
                 #Danielly
@@ -120,8 +121,8 @@ while True:
                     print("Erro, responda corretamente!")
                     acao_professor= int(input("Bem vindo ao nosso sistema\n[1] - Ve alunos cadastrados\n[2] - Excluir cadastro de aluno\n: "))
                 if acao_professor == 1:
-                    time.sleep(20)
-                    print("Vamos lá")
+                    time.sleep(2)
+                    print("Vamos lá\n")
                     professor_login.exibir_alunos()
                     print("Esses são os alunos cadastrados")
                     tempo_de_esperar = int(input("Digite 1 quando desejar voltar\n: "))
@@ -137,7 +138,7 @@ while True:
                     
                 else:
                     print("Em atualizações futuras...")
-                    time.sleep(10)
+                    time.sleep(5)
                 
 
                 
@@ -149,7 +150,7 @@ while True:
             aluno_login = Aluno(None,None,None,matricula_aluno,senha_login_aluno,None)
             if aluno_login.login():
                 print("Bem Vindo!")
-                time.sleep(10)
+                time.sleep(5)
             
     else:
         #Daniel
