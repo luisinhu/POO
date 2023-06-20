@@ -103,7 +103,7 @@ class Professor(Pessoa):
             print("Sexo:",sexo)
             print("Matricula:",matricula)
             print("Modalidade:",modalidade)
-        print()
+            print()
 
         banco.close()
     
