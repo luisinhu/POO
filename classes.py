@@ -87,8 +87,21 @@ class Professor(Pessoa):
     def exibir_alunos(self):
         banco = sqlite3.connect("banco_de_dados.db")
         cursor = banco.cursor()
-        cursor.execute("SELECT * FROM Alunos ")
+        cursor.execute("SELECT nome,turma,sexo,matricula,modalidade FROM Alunos ")
         mostrar_alunos = cursor.fetchall()
-        for i in mostrar_alunos:
-            print(i)
+        for mostrar_alunos in mostrar_alunos:
+            nome = mostrar_alunos[0]
+            turma = mostrar_alunos[1]
+            sexo = mostrar_alunos[2]
+            matricula = mostrar_alunos[3]
+            modalidade = mostrar_alunos[4]
+           
+            print("Nome:", nome)
+            print("Turma:",turma)
+            print("Sexo:",sexo)
+            print("Matricula:",matricula)
+            print("Modalidade:",modalidade)
+        print()
+
+        banco.close()
     
