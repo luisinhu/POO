@@ -101,6 +101,7 @@ class Professor(Pessoa):
             print("Sexo:",sexo)
             print("Matricula:",matricula)
             print("Modalidade:",modalidade)
+            print("="*20)
         print()
 
         banco.close()
