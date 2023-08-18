@@ -145,11 +145,12 @@ while True:
         if resposta == 2:
             os.system("cls")
             print("Faça o login")
+            nome_aluno_login = input("Digite seu nome\n: ")
             matricula_aluno = int(input("Digite sua matricula\n:"))
             senha_login_aluno = input("Digite sua senha\n: ")
-            aluno_login = Aluno(None,None,None,matricula_aluno,senha_login_aluno,None)
+            aluno_login = Aluno(nome_aluno_login,None,None,matricula_aluno,senha_login_aluno,None)
             if aluno_login.login():
-                print("Bem Vindo!")
+                print(f"Bem Vindo {nome_aluno_login}!")
                 time.sleep(5)
             
     else:
