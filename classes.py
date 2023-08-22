@@ -85,7 +85,7 @@ class Professor(Pessoa):
             return True
         else:
             print("Erro, algo está errado")
-            return False
+            return False 
     #Daniel
     def exibir_alunos(self):
         banco = sqlite3.connect("banco_de_dados.db")
